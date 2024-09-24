@@ -1,0 +1,69 @@
+# i3 config file
+
+# Set mod key (Mod1=Alt, Mod4=Super)
+set $mod Mod1
+
+# Exit X shortcut
+bindsym $mod+Shift+z exec "i3-msg exit"
+
+# Set default border style
+default_border pixel 1
+default_floating_border pixel 1
+
+# Disable automatic tiling
+workspace_layout tabbed
+
+# Allow floating windows to be moved with the mouse while holding the mod key
+floating_modifier $mod
+
+# Set black background using xsetroot
+exec --no-startup-id xsetroot -solid "#000000"
+
+# Open images with feh in floating mode, scaled to fit without scrolling
+bindsym $mod+i exec --no-startup-id "feh --scale-down"
+
+# Force feh windows to float, set size, and center within the middle xterm window
+for_window [class="feh"] floating enable, resize set 600 300, move position 113 300
+
+# Set border size to 0 for xterm windows
+for_window [class="XTerm"] border pixel 0
+
+# class                 border  backgr. text    indicator child_border
+client.focused          #ff0000 #000000 #ff0000 #ff0000   #ff0000
+client.focused_inactive #ff0000 #000000 #ff0000 #ff0000   #ff0000
+client.unfocused        #ff0000 #000000 #ff0000 #ff0000   #ff0000
+client.urgent           #ff0000 #000000 #ff0000 #ff0000   #ff0000
+client.placeholder      #ff0000 #000000 #ff0000 #ff0000   #ff0000
+
+# Resizing windows
+mode "resize" {
+        bindsym Left resize shrink width 1 px or 1 ppt
+        bindsym Down resize grow height 1 px or 1 ppt
+        bindsym Up resize shrink height 1 px or 1 ppt
+        bindsym Right resize grow width 1 px or 1 ppt
+
+        # back to normal: Enter or Escape or $mod+r
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
+}
+bindsym $mod+r mode "resize"
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+bar {
+        status_command i3status
+        colors {
+                background #000000
+                statusline #ff1e00
+                separator  #ff1e00
+
+                focused_workspace  #ff1e00 #000000 #ff1e00
+                active_workspace   #ff1e00 #000000 #ff1e00
+                inactive_workspace #ff1e00 #000000 #ff1e00
+                urgent_workspace   #ff1e00 #000000 #ff1e00
+                binding_mode       #ff1e00 #000000 #ff1e00
+        }
+}
+# Run the Python script to create 3 xterm windows
+exec_always --no-startup-id python3 ~/.config/i3/i3_xterm_manager.py

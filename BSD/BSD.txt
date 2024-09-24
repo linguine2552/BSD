@@ -1,0 +1,100 @@
+
+sysupgrade
+
+/etc/rc.d/sshd stop
+/etc/rc.conf.local
+
+cc -I/usr/X11R6/include -L/usr/X11R6/lib -o svg svg.c -lX11
+
+~/.config/i3/layout.json
+
+~/.config/i3/config
+
+~/.config/neofetch/config.conf
+
+~/.config/i3/i3_xterm_manager.py
+
+pkg_add py3-i3ipc
+
+pkg_add coreutils
+pkg_add -u
+less /user/local/share/doc/pkg-readmes/
+
+dmesg | tail
+mkdir /mnt/usb
+file -s /dev/sdXc
+{
+mount -t msdos /dev/sdXi /mnt/usb
+ntfs-3g /dev/sdXi /mnt/usb
+mount -t ext2fs /dev/sdXi /mnt/usb
+}
+df -h
+umount /mnt/usb
+
+echo "exec i3" > ~/.xinitrc
+
+mv lumen /usr/local/bin/
+
+lumen set 50
+
+   MAIN BINDINGS [ranger]
+     h, j, k, l    Move left, down, up or right
+
+     ^D or J, ^U or K
+                   Move a half page down, up
+
+     H, L          Move back and forward in the history
+
+     gg            Move to the top
+
+     G             Move to the bottom
+
+     [, ]          Move up and down in the parent directory.
+
+     ^R            Reload everything
+
+     F             Toggle freeze_files setting.  When active (indicated by a
+                   cyan FROZEN message in the status bar), directories and
+                   files will not be loaded, improving performance when all
+                   the files you need are already loaded.  This does not
+                   affect file previews, which can be toggled with zI.  Also
+                   try disabling the preview of directories with zP.
+
+     ^L            Redraw the screen
+
+     i             Inspect the current file in a bigger window.
+
+     E             Edit the current file in $VISUAL otherwise $EDITOR
+                   otherwise "vim"
+
+     S             Open a shell in the current directory
+
+     ?             Opens this man page
+
+     W             Opens the log window where you can review messages that pop
+                   up at the bottom.
+
+     w             Opens the task window where you can view and modify
+                   background processes that currently run in ranger.  In
+                   there, you can type "dd" to abort a process and "J" or "K"
+                   to change the priority of a process.  Only one process is
+                   run at a time.
+
+     yy            Copy (yank) the selection, like pressing Ctrl+C in modern
+                   GUI programs.  (You can also type "ya" to add files to the
+                   copy buffer, "yr" to remove files again, or "yt" for
+                   toggling.)
+
+     dd            Cut the selection, like pressing Ctrl+X in modern GUI
+                   programs.  (There are also "da", "dr" and "dt" shortcuts
+                   equivalent to "ya", "yr" and "yt".)
+
+     pp            Paste the files which were previously copied or cut, like
+                   pressing Ctrl+V in modern GUI programs.
+
+                   Conflicts will be renamed by appending an '_' (and a
+                   counter if necessary), resulting in "file.ext_",
+                   "file.ext_0", etc. If you prefer "file_.ext" you can use
+                   the "paste_ext" command.
+
+     po            Paste the copied/cut files, overwriting existing files.

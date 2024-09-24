@@ -1,0 +1,55 @@
+{
+    "layout": "splith",
+    "percent": 1,
+    "type": "con",
+    "nodes": [
+        {
+            "name": "Top Left",
+            "type": "con",
+            "floating": "auto_on",
+            "geometry": {
+                "x": 20,
+                "y": 20,
+                "width": 600,
+                "height": 300
+            },
+            "swallows": [
+                {
+                    "class": "^XTerm$"
+                }
+            ]
+        },
+        {
+            "name": "Bottom Left",
+            "type": "con",
+            "floating": "auto_on",
+            "geometry": {
+                "x": 20,
+                "y": 340,
+                "width": 600,
+                "height": 300
+            },
+            "swallows": [
+                {
+                    "class": "^XTerm$"
+                }
+            ]
+        },
+        {
+            "name": "Right",
+            "type": "con",
+            "floating": "auto_on",
+            "geometry": {
+                "x": 640,
+                "y": 20,
+                "width": 600,
+                "height": 620
+            },
+            "swallows": [
+                {
+                    "class": "^XTerm$"
+                }
+            ]
+        }
+    ]
+}
